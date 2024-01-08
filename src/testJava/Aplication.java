@@ -33,14 +33,10 @@ public class Aplication {
 			System.out.println("Data da Saida em (dd/MM/yyyy): ");
 			saida = sdf.parse(sc.next());
 			
-			Date now = new Date();
-			if(entrada.before(now) || saida.before(now)) {
-				System.out.println("Erro na reserva: A data da saida não pode ser anterior a data de entrada!!");
-			}else if(!saida.after(entrada)){
-				System.out.println("Erro na reserva: A data da saida não pode ser anterior a data de entrada!!");
-			}
-			else {
-			reserva.updateData(entrada, saida);
+			String erro = reserva.updateData(entrada, saida);
+			if(erro != null) {
+				System.out.println("Erro na RESERVA: " + erro);
+			}else {
 			System.out.println("Dados atualizados da RESERVA: " + reserva);
 			}
 		}
